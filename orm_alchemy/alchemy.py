@@ -300,7 +300,7 @@ class BaseModel(object):
         """
         try:
             self.db.add(self)
-            self.db.commit()
+            # self.db.commit()
             return self
         except Exception as e:
             self.db.rollback()
@@ -314,8 +314,8 @@ class BaseModel(object):
 
         """
         try:
-            self.db.session.delete(self)
-            return self.db.commit()
+            return self.db.session.delete(self)
+            # return self.db.commit()
         except Exception as e:
             self.db.rollback()
             raise
@@ -370,8 +370,8 @@ class Model(BaseModel):
         # Hard delete
         if hard_delete:
             try:
-                self.db.session.delete(self)
-                return self.db.commit()
+                return self.db.session.delete(self)
+                # return self.db.commit()
             except:
                 self.db.rollback()
                 raise
